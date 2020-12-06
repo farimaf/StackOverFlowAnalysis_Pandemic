@@ -10,7 +10,7 @@ if not os.path.exists(usersCsvPath):
     os.makedirs(usersCsvPath)
 
 headerRow="AccId,CreateDate,LastAccessDate,ViewsNum,UpVotes,DownVotes"
-
+numskipped=0
 for file in os.listdir(usersXmlPath):
     if file.endswith(".xml"):
         print("processing "+file+" started")
@@ -35,6 +35,10 @@ for file in os.listdir(usersXmlPath):
                     if (downVotes == None):
                         downVotes = "0"
                     accId = row.get('AccountId')
+                    if(accId==None):
+                        numskipped+=1
+                        continue
                     rowCsv=accId+","+createDate+","+lastAccessDate+","+viewsNum+","+upVotes+","+downVotes
                     csvFile.write(rowCsv+"\n")
         print("processing "+file+" finished")
+print("num skipped bc of acc id of None: "+str(numskipped))
