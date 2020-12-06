@@ -26,8 +26,14 @@ for file in os.listdir(usersXmlPath):
                 if(datetime.strptime(createDate,'%Y-%m-%dT%H:%M:%S.%f')>datetime.strptime('2017-01-01' , '%Y-%m-%d')):
                     lastAccessDate = row.get('LastAccessDate')
                     viewsNum = row.get('Views')
+                    if(viewsNum==None):
+                        viewsNum="0"
                     upVotes = row.get('UpVotes')
+                    if (upVotes == None):
+                        upVotes = "0"
                     downVotes = row.get('DownVotes')
+                    if (downVotes == None):
+                        downVotes = "0"
                     accId = row.get('AccountId')
                     rowCsv=accId+","+createDate+","+lastAccessDate+","+viewsNum+","+upVotes+","+downVotes
                     csvFile.write(rowCsv+"\n")
