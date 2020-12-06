@@ -9,7 +9,7 @@ usersCsvPath=sys.argv[2]
 if not os.path.exists(usersCsvPath):
     os.makedirs(usersCsvPath)
 
-headerRow="AccId,CreateDate,LastAccessDate,ViewsNum,UpVotes,DownVotes"
+#headerRow is "AccId,CreateDate,LastAccessDate,ViewsNum,UpVotes,DownVotes"
 numskipped=0
 for file in os.listdir(usersXmlPath):
     if file.endswith(".xml"):
@@ -17,7 +17,7 @@ for file in os.listdir(usersXmlPath):
         xmlFile = open(os.path.join(usersXmlPath,file), 'r', encoding='utf-8')
         usersCsvFilePath=os.path.join(usersCsvPath,file[0:len(file)-3]+"csv")
         with open(usersCsvFilePath, 'w') as csvFile:
-            csvFile.write(headerRow+"\n")
+
             for line in xmlFile:
                 if not line.lstrip().startswith("<row"):
                     continue
