@@ -23,7 +23,7 @@ for file in os.listdir(usersXmlPath):
                     continue
                 row = fromstring(line)
                 createDate = row.get('CreationDate')
-                if(datetime.strptime(createDate,'%Y-%m-%dT%H:%M:%S.%f')>datetime.strptime('2017-01-01' , '%Y-%m-%d')):
+                if(datetime.strptime(createDate,'%Y-%m-%dT%H:%M:%S.%f')>=datetime.strptime('2017-01-01' , '%Y-%m-%d') and datetime.strptime(createDate,'%Y-%m-%dT%H:%M:%S.%f')<datetime.strptime('2020-12-01' , '%Y-%m-%d')):
                     lastAccessDate = row.get('LastAccessDate')
                     viewsNum = row.get('Views')
                     if(viewsNum==None):
