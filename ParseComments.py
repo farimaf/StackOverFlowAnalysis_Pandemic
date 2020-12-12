@@ -32,8 +32,8 @@ for file in os.listdir(commentsXmlPath):
                     # if (score == None):
                     #     score = "0"
                     userId = row.get('UserId')
-                    # if (userId == None):
-                    #     userId = "-1"
+                    if (userId == None): #apparently can be none if user is deleted: https://meta.stackexchange.com/questions/2677/database-schema-documentation-for-the-public-data-dump-and-sede
+                        userId = "-1"
                     rowCsv=rowId+","+createDate+","+postId+","+score+","+userId
                     csvFile.write(rowCsv+"\n")
         print("processing "+file+" finished")

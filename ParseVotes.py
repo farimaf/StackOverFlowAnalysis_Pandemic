@@ -9,7 +9,7 @@ votesCsvPath=sys.argv[2]
 if not os.path.exists(votesCsvPath):
     os.makedirs(votesCsvPath)
 
-#headerRow is "RowId,CreationDate,PostId,VoteType"
+#headerRow is "RowId,CreationDate,PostId,VoteType,UserId"
 # numskipped=0
 for file in os.listdir(votesXmlPath):
     if file.endswith(".xml"):
